@@ -3,18 +3,23 @@ import java.util.Arrays;
 
 public class home {
     public static void main(String[] args) {
-        //one();
-        //two();
-        //three();
-        //four();
-//        print(22);
-//        print(22, 44);
-//        print(22, 'a');
-//        print(2);
-//        print("asd", 33);
-//        print("asd", 's');
-        //six(4);
-        seven();
+        one();
+        two();
+        three();
+        four();
+        print(22);
+        print(22, 44);
+        print(22, 'a');
+        print(2);
+        print("asd", 33);
+        print("asd", 's');
+        six(4);
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        seven(a);
+        int b = scanner.nextInt();
+        int x = eight(b, 0);
+        System.out.println(x);
 
 
     }
@@ -116,10 +121,11 @@ public class home {
         }
     }
 
-    //Создать пять методов print с разными сигнатурами, внутри них выводить все переданные переменные в консоль.
+
     public static void print(int a) {
         System.out.println(a);
     }
+    //Создать пять методов print с разными сигнатурами, внутри них выводить все переданные переменные в консоль.
 
     public static void print(int a, int b) {
         System.out.println(a + b);
@@ -152,21 +158,29 @@ public class home {
         }
     }
 
-    public static void seven() {
+    public static int seven(int n) {
         //Дано натуральное число N. Выведите все его цифры по одной, в обратном порядке,
         // разделяя их пробелами или новыми строками.
         //При решении этой задачи нельзя использовать строки, списки, массивы (ну и циклы, разумеется).
         // Разрешена только рекурсия и целочисленная арифметика.
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int first = n %10;
-        int second = n/10%10;
-        int thrid = n/100;
-        System.out.println(first);
-        System.out.println(second);
-        System.out.println(thrid);
-
+        if (n != 0) {
+            int sim = n % 10;
+            System.out.print(sim);
+            sim = n / 10;
+            return seven(sim);
+        } else
+            return n;
     }
 
-
+    public static int eight(int n, int sum) {
+        //Дано натуральное число N. Вычислите сумму его цифр.
+        //При решении этой задачи нельзя использовать строки, списки, массивы (ну и циклы, разумеется).
+        if (n != 0) {
+            int sim = n % 10;
+            sum = sum + sim;
+            sim = n / 10;
+            return (eight(sim, sum));
+        } else
+            return (sum);
+    }
 }
